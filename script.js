@@ -9,7 +9,7 @@ const experience = [
   {
     title: 'Research Assistant', org: 'University of Edinburgh', date: '2024 – Present',
     body: "Built and evaluated Academic Families, a peer-support scheme pairing over 400 first-year Informatics students with older student mentors to ease the transition to university. Interviewed students to assess the scheme's impact and co-authored the resulting paper, published at the Computing Education Practice Conference (CEP26) 2026. First author.",
-    extraHref: 'https://drive.google.com/PASTE-ACADEMIC-FAMILIES-PAPER-LINK', extraLabel: 'Academic Families',
+    extraHref: 'https://drive.google.com/file/d/1DlQOGp0jyvNmRoTKinYjcmUm3fKwcKId/view?usp=sharing', extraLabel: 'Academic Families',
   },
   {
     title: 'President', org: 'CompSoc, University of Edinburgh', date: '2024 – 2025',
