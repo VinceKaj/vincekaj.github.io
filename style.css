@@ -1,0 +1,150 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #faf8f4;
+  color: #1c1a17;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+a { color: #1c1a17; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: #6b6459; }
+::selection { background: #e7e2d8; }
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 72px 48px 120px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* LEFT PANEL */
+.profile {
+  position: sticky;
+  top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.profile-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #e2ddd2;
+}
+.profile-name {
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 0 0 6px;
+}
+.profile-role {
+  font-size: 15px;
+  color: #4a453e;
+  line-height: 1.5;
+}
+.profile-block {
+  font-size: 14px;
+  color: #6b6459;
+  line-height: 1.7;
+  border-top: 1px solid #e2ddd2;
+  padding-top: 16px;
+}
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid #e2ddd2;
+  padding-top: 16px;
+}
+.profile-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* RIGHT PANEL */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  min-width: 0;
+}
+section h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4a453e;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d8d2c4;
+}
+
+.entry { border-bottom: 1px solid #e2ddd2; padding: 18px 0; }
+.entry-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+.entry-title-row { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.entry-title { font-family: 'Libre Caslon Text', Georgia, serif; font-size: 19px; }
+.entry-org { font-size: 14px; color: #6b6459; }
+.entry-meta { display: flex; align-items: center; gap: 10px; flex: none; }
+.entry-date { font-size: 13px; color: #948d80; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chevron { display: flex; color: #948d80; transition: transform 250ms ease; }
+.entry.open .chevron { transform: rotate(180deg); }
+
+.entry-body-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms ease;
+}
+.entry.open .entry-body-wrap { grid-template-rows: 1fr; }
+.entry-body-inner { overflow: hidden; }
+.entry-body { margin: 14px 0 0; font-size: 15px; line-height: 1.65; color: #332f29; max-width: 62ch; }
+
+.entry-extra {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border: 1px solid #d8d2c4;
+  font-size: 14px;
+  text-decoration: none;
+  max-width: 62ch;
+}
+.entry-extra svg { margin-left: auto; }
+.entry-supervisors { margin-top: 8px; font-size: 14px; color: #6b6459; }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.skills-label { font-size: 13px; color: #948d80; letter-spacing: 0.04em; margin-bottom: 8px; }
+.skills-primary { margin: 0 0 6px; font-size: 15px; line-height: 1.6; color: #332f29; }
+.skills-secondary { margin: 0; font-size: 14px; line-height: 1.6; color: #6b6459; }
+
+@media (max-width: 720px) {
+  .page { grid-template-columns: 1fr; padding: 40px 24px 80px; gap: 40px; }
+  .profile { position: static; }
+  .profile-photo { max-width: 180px; }
+  .skills-grid { grid-template-columns: 1fr; }
+}

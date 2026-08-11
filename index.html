@@ -1,105 +1,88 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Vincent Danys</title>
-  </head>
-  <style>
-    * {
-      font-family:monospace;
-    }
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vincentas Danys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
 
-    body {
-      background-color: darkgrey;
-      padding: 0;
-      margin: 0;
-    }
+  <!-- LEFT PANEL -->
+  <div class="profile">
+    <img class="profile-photo" src="images/pfp.jpg" alt="Vincentas Danys">
 
-    .nav {
-      width: 12%;
-      float: left;
-      padding: 1vw;
-      text-align: center;
-      height: 100vh;
-    }
-
-    .main {
-      width: 55%;
-      float: left;
-      background-color: white;
-      height: 100vh;
-      padding-left: 2vw;
-      padding-top: 2vh;
-    }
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      /* margin-left: 1em; */
-      padding: 0;
-    }
-
-    p, li {
-      font-size: 1.2em;
-    }
-
-    li {
-      margin-bottom: .2em;
-    }
-
-    .nav h1 {
-      margin-bottom: 0;
-    }
-
-    .nav hr {
-      width: 60%;
-      margin-bottom: 1em;
-      border: 1px solid black;
-    }
-
-    .profile {
-      float: left;
-      width: 27%;
-      text-align: center;
-    }
-
-    .profile img {
-      border: 5px solid white;
-      border-radius: 100%;
-    }
-
-  </style>
-  <body>
-    <div class="nav">
-      <h1>Vincent</h1>
-      <hr>
-      <ul>
-        <li><a href="#">Home</a></li>
-      </ul>
-
-
+    <div>
+      <h1 class="profile-name">Vincentas Danys</h1>
+      <div class="profile-role">Software Engineer<br>Undergrad Student</div>
     </div>
-    <div class="main">
-      <h1>About me</h1>
-      <p>I'm Vincent! I study Computer Science & AI at the University of Edinburgh.</p>
-      <br>
-      
-      <h1>Links</h1>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/vincent-danys/">LinkedIn</a></li>
-        <li><a href="https://github.com/VinceKaj">Github</a></li>
-        <li><a href="https://drive.google.com/file/d/1Inb_DMyQTmt2fIz_NXxm4D2eXeIDmvZW/view?usp=sharing">CV</a></li>
-      </ul>
-      <br>
 
-      <h1>Contact</h1>
-      <ul>
-        <li>Email - <a href="mailto:v.danys@sms.ed.ac.uk">v.danys@sms.ed.ac.uk</a></li>
-        <li>Discord - <a href="https://discord.com/users/295091158160244736">vincekaj</a></li>
-      </ul>
+    <div class="profile-block">
+      University of Edinburgh<br>
+      Edinburgh, UK
     </div>
-    <div class="profile">
-      <br><br>
-      <img src="profile-pic.png" width="75%">
+
+    <div class="profile-links">
+      <a href="https://www.linkedin.com/in/Vincentas-danys/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle><path d="M10 9v12M10 13c0-2.5 2-4 4.5-4S19 10.5 19 13v8"></path></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/VinceKaj/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+        GitHub
+      </a>
+      <a href="https://drive.google.com/PASTE-CV-LINK-HERE" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg>
+        CV
+      </a>
     </div>
-  </body>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="content">
+
+    <!-- EXPERIENCE -->
+    <section>
+      <h2>Experience</h2>
+      <div id="experience-list"></div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2>Education</h2>
+      <div id="education-list"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section>
+      <h2>Projects</h2>
+      <div id="projects-list"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div>
+          <div class="skills-label">Programming Languages</div>
+          <p class="skills-primary">Python, Java</p>
+          <p class="skills-secondary">C, C++, Haskell, JavaScript, SQL</p>
+        </div>
+        <div>
+          <div class="skills-label">Tools</div>
+          <p class="skills-primary">Linux (bash)</p>
+          <p class="skills-secondary">Google Cloud Platform, Kubernetes, Postgres, DuckDB</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>
