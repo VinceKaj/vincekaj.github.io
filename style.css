@@ -55,20 +55,28 @@ a:hover { color: #6b6459; }
 }
 .profile-links a {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 10px;
   font-size: 14px;
+  line-height: 1;
   text-decoration: none;
 }
 .profile-text {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 10px;
   font-size: 14px;
+  line-height: 1;
   color: #1c1a17;
 }
 .profile-links svg {
   flex: none;
+  transform: translateY(3px);
+}
+/* All-lowercase text has a lower optical centre than the capitalised
+   labels above it, so this row needs an extra nudge. */
+.profile-email svg {
+  transform: translateY(4.5px);
 }
 
 /* RIGHT PANEL */
