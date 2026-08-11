@@ -46,13 +46,6 @@ a:hover { color: #6b6459; }
   color: #4a453e;
   line-height: 1.5;
 }
-.profile-block {
-  font-size: 14px;
-  color: #6b6459;
-  line-height: 1.7;
-  border-top: 1px solid #e2ddd2;
-  padding-top: 16px;
-}
 .profile-links {
   display: flex;
   flex-direction: column;
@@ -66,6 +59,16 @@ a:hover { color: #6b6459; }
   gap: 10px;
   font-size: 14px;
   text-decoration: none;
+}
+.profile-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #1c1a17;
+}
+.profile-links svg {
+  flex: none;
 }
 
 /* RIGHT PANEL */
@@ -102,7 +105,7 @@ section h2 {
   color: inherit;
   text-align: left;
 }
-.entry-title-row { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.entry-title-row { min-width: 0; }
 .entry-title { font-family: 'Libre Caslon Text', Georgia, serif; font-size: 19px; }
 .entry-org { font-size: 14px; color: #6b6459; }
 .entry-meta { display: flex; align-items: center; gap: 10px; flex: none; }
@@ -118,6 +121,22 @@ section h2 {
 .entry.open .entry-body-wrap { grid-template-rows: 1fr; }
 .entry-body-inner { overflow: hidden; }
 .entry-body { margin: 14px 0 0; font-size: 15px; line-height: 1.65; color: #332f29; max-width: 62ch; }
+
+.entry-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+  max-width: 62ch;
+}
+.stack-tag {
+  font-size: 12px;
+  color: #6b6459;
+  letter-spacing: 0.02em;
+  border: 1px solid #e2ddd2;
+  padding: 4px 9px;
+  white-space: nowrap;
+}
 
 .entry-extra {
   display: inline-flex;
@@ -139,8 +158,7 @@ section h2 {
   gap: 32px;
 }
 .skills-label { font-size: 13px; color: #948d80; letter-spacing: 0.04em; margin-bottom: 8px; }
-.skills-primary { margin: 0 0 6px; font-size: 15px; line-height: 1.6; color: #332f29; }
-.skills-secondary { margin: 0; font-size: 14px; line-height: 1.6; color: #6b6459; }
+.skills-list { margin: 0; font-size: 15px; line-height: 1.6; color: #332f29; }
 
 @media (max-width: 720px) {
   .page { grid-template-columns: 1fr; padding: 40px 24px 80px; gap: 40px; }
