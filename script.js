@@ -4,7 +4,7 @@ const ARROW_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" s
 const experience = [
   {
     title: 'Software Engineering Intern', org: 'G-Research, London', date: 'Jun – Aug 2026', open: true,
-    body: 'Working in trading reliability engineering at a quantitative finance research firm. The team keeps the systems that place and monitor trades running through the trading day, so the work sits between the research side and production infrastructure.',
+    body: 'Working in trading reliability engineering at a quantitative finance research firm.',
     stack: ['Python', 'Polars', '.NET'],
   },
   {
