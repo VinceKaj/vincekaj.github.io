@@ -10,7 +10,7 @@ const experience = [
   {
     title: 'Research Assistant', org: 'University of Edinburgh', date: '2024 – Present',
     body: "Built and evaluated Academic Families, a peer-support scheme that pairs over 400 first-year Informatics students with older students. Ran interviews and surveys to measure whether it changed how students settled into the school, and wrote up the results as first author. Published at the Computing Education Practice Conference (CEP26) 2026.",
-    extraHref: 'https://drive.google.com/file/d/1DlQOGp0jyvNmRoTKinYjcmUm3fKwcKId/view?usp=sharing', extraLabel: 'Building belonging: evaluating a student-led peer-support scheme in Computer Science',
+    extraHref: '#building-belonging', extraLabel: 'Building belonging: evaluating a student-led peer-support scheme in Computer Science',
   },
   {
     title: 'President', org: 'CompSoc, University of Edinburgh', date: '2024 – 2025',
@@ -25,6 +25,9 @@ const experience = [
     title: 'EPSRC Research Intern', org: 'School of Informatics, University of Edinburgh', date: 'May – Jul 2024',
     body: "Fine-tuned Meta's Llama 3-8B with low-rank adapters to generate spoken conversation, working with the automatic speech recognition group. Trained and evaluated on the Switchboard-1 corpus, where the fine-tuned model beat Meta's base model at generating text that matched real speech.",
     stack: ['Python', 'PyTorch', 'Hugging Face Transformers', 'LoRA'],
+    supervisors: [
+      { name: 'Dr. Ondrej Klejch', href: 'https://www.ondrejklejch.cz/' },
+    ],
   },
 ];
 
@@ -36,6 +39,7 @@ const education = [
   {
     title: 'EPFL', org: 'Exchange year, Computer Science, Lausanne, Switzerland', date: '2025 – 2026',
     body: 'Full academic year abroad, taking systems and machine learning courses. Did a semester research project on how cardinality estimation affects query planning in modern database systems.',
+    extraHref: '#cardinality-injection', extraLabel: 'Cardinality Injection in DuckDB',
   },
 ];
 
@@ -49,6 +53,13 @@ const projects = [
     ],
   },
   {
+    id: 'building-belonging',
+    title: 'Research Paper', org: 'Academic Families in Informatics, Published CEP\'26', date: '2024 – 2026',
+    body: 'Created Academic Families, a student-led peer-support scheme in Edinburgh\'s School of Informatics with over 400 students involved. We then wrote a paper evaluating how the scheme went, published at the Computing Education Practice Conference (CEP26) 2026. The project was led by Professor Fiona McNeill, and I am first author on the paper.',
+    extraHref: 'https://drive.google.com/file/d/1DlQOGp0jyvNmRoTKinYjcmUm3fKwcKId/view?usp=sharing', extraLabel: 'Read the paper',
+  },
+  {
+    id: 'cardinality-injection',
     title: 'Research Project', org: 'Cardinality Injection in DuckDB', date: '2025',
     body: 'Measured how much bad cardinality estimates cost a modern query optimiser. Fed true cardinalities straight into DuckDB\'s optimiser and compared the plans it picked against the ones it produced from its own estimates, which separates estimation error from the rest of the planner.',
     stack: ['C++', 'DuckDB', 'SQL', 'Python'],
@@ -75,7 +86,7 @@ const awards = [
 function renderList(containerId, items) {
   const container = document.getElementById(containerId);
   container.innerHTML = items.map((item, i) => `
-    <div class="entry${item.open ? ' open' : ''}" data-index="${i}">
+    <div class="entry${item.open ? ' open' : ''}" data-index="${i}"${item.id ? ` id="${item.id}"` : ''}>
       <button class="entry-header" type="button" aria-expanded="${!!item.open}">
         <span class="entry-title-row"><span class="entry-title">${item.title}</span><span class="entry-org">&nbsp;— ${item.org}</span></span>
         <span class="entry-meta">
@@ -86,19 +97,19 @@ function renderList(containerId, items) {
       <div class="entry-body-wrap">
         <div class="entry-body-inner">
           <p class="entry-body">${item.body}</p>
+          ${item.supervisors ? `
+            <div class="entry-supervisors">
+              ${item.supervisors.length > 1 ? 'Supervisors' : 'Supervisor'}: ${item.supervisors.map(s => `<a href="${s.href}" target="_blank" rel="noopener">${s.name}</a>`).join(' &amp; ')}
+            </div>` : ''}
           ${item.stack ? `
             <div class="entry-stack">
               ${item.stack.map(s => `<span class="stack-tag">${s}</span>`).join('')}
             </div>` : ''}
           ${item.extraHref ? `
-            <a class="entry-extra" href="${item.extraHref}" target="_blank" rel="noopener">
+            <a class="entry-extra" href="${item.extraHref}"${item.extraHref.startsWith('#') ? '' : ' target="_blank" rel="noopener"'}>
               ${item.extraLabel}
               ${ARROW_SVG}
             </a>` : ''}
-          ${item.supervisors ? `
-            <div class="entry-supervisors">
-              Supervisors: ${item.supervisors.map(s => `<a href="${s.href}" target="_blank" rel="noopener">${s.name}</a>`).join(' &amp; ')}
-            </div>` : ''}
         </div>
       </div>
     </div>
@@ -117,3 +128,17 @@ renderList('experience-list', experience);
 renderList('education-list', education);
 renderList('projects-list', projects);
 renderList('awards-list', awards);
+
+// Expand an entry when it is the target of an in-page link.
+function openTargetEntry() {
+  const entry = location.hash && document.getElementById(location.hash.slice(1));
+  if (!entry || !entry.classList.contains('entry')) return;
+  entry.classList.add('open');
+  entry.querySelector('.entry-header').setAttribute('aria-expanded', 'true');
+}
+window.addEventListener('hashchange', openTargetEntry);
+// hashchange doesn't fire when the hash is unchanged, e.g. clicking the same link twice.
+document.addEventListener('click', e => {
+  if (e.target.closest('a[href^="#"]')) setTimeout(openTargetEntry);
+});
+openTargetEntry();
