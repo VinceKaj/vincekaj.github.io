@@ -8,18 +8,14 @@ const experience = [
     stack: ['Python', 'Polars', '.NET'],
   },
   {
-    title: 'Research Assistant', org: 'University of Edinburgh', date: '2024 – Present',
+    title: 'Tutor & Teaching Assistant', org: 'University of Edinburgh', date: '2024 – Present',
+    body: 'I lead tutorials for \'Introduction to Programming\', a first-year course in Informatics. I previously taught tutorials for INF1A about functional programming.',
+    stack: ['Haskell', 'Python'],
+  },
+  {
+    title: 'Research Assistant', org: 'University of Edinburgh', date: '2024 – 2025',
     body: "Built and evaluated Academic Families, a peer-support scheme that pairs over 400 first-year Informatics students with older students. Ran interviews and surveys to measure whether it changed how students settled into the school, and wrote up the results as first author. Published at the Computing Education Practice Conference (CEP26) 2026.",
     extraHref: '#building-belonging', extraLabel: 'Building belonging: evaluating a student-led peer-support scheme in Computer Science',
-  },
-  {
-    title: 'President', org: 'CompSoc, University of Edinburgh', date: '2024 – 2025',
-    body: "Ran Scotland's largest student tech society, covering 1,500 members. Set up events and hackathons with Google, Huawei and Meta, and worked with the School of Informatics on Academic Families, the Industry Advisory Board and HackTheBurgh. Nominated for Outstanding Leadership at the University of Edinburgh Student Awards for this work.",
-  },
-  {
-    title: 'Tutor & Teaching Assistant', org: 'University of Edinburgh', date: '2024 – 2026',
-    body: 'Taught tutorials for INF1A, the first-year course on functional programming and Python. Marked coursework and worked through problems with students in small groups.',
-    stack: ['Haskell', 'Python'],
   },
   {
     title: 'EPSRC Research Intern', org: 'School of Informatics, University of Edinburgh', date: 'May – Jul 2024',
@@ -69,6 +65,17 @@ const projects = [
     title: 'Trading Algorithms', org: 'Personal project', date: 'May – Aug 2025',
     body: 'Built models that trade on price and volume data, then deployed them to run on a schedule in the cloud. Data loading and feature generation run in Polars, the models are trained with scikit-learn, and the whole thing runs as Cloud Functions on GCP.',
     stack: ['Python', 'Polars', 'scikit-learn', 'GCP Cloud Functions'],
+  },
+];
+
+const volunteering = [
+  {
+    title: 'President', org: 'CompSoc, University of Edinburgh', date: '2024 – 2025', open: true,
+    body: "Ran Scotland's largest student tech society, covering 1,500 members. Set up events and hackathons with Google, Huawei and Meta, and worked with the School of Informatics on Academic Families, the Industry Advisory Board and HackTheBurgh. Nominated for Outstanding Leadership at the University of Edinburgh Student Awards for this work.",
+  },
+  {
+    title: 'President', org: 'Lithuanian Society, University of Edinburgh', date: '2026 - 2027',
+    body: 'Organising events for local students together with Lithuanian youth organisations, including <a href="https://jkljs.org/" target="_blank" rel="noopener">JKLJS</a> and the dance collective <a href="https://jklb.co.uk/meno-kolektyvas/tautiniu-sokiu-kolektyvas-usnis/" target="_blank" rel="noopener">Usnis</a>.',
   },
 ];
 
@@ -127,6 +134,7 @@ function renderList(containerId, items) {
 renderList('experience-list', experience);
 renderList('education-list', education);
 renderList('projects-list', projects);
+renderList('volunteering-list', volunteering);
 renderList('awards-list', awards);
 
 // Expand an entry when it is the target of an in-page link.
