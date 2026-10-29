@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 1 Revision · Introduction to Programming</title>
+<meta name="description" content="Revision guide for Introduction to Programming, Part 1: a 10-question quiz, theory, predict-the-output drills and coding exercises.">
+<link rel="icon" href="images/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf8f4;
+  --ink: #1c1a17;
+  --ink-2: #332f29;
+  --ink-3: #4a453e;
+  --muted: #6b6459;
+  --faint: #948d80;
+  --rule: #e2ddd2;
+  --rule-2: #d8d2c4;
+  --code-bg: #f1ede5;
+  --card: #fffdf9;
+  --ok: #2f6b3a;
+  --ok-bg: #e9f1e6;
+  --bad: #9a3a2a;
+  --bad-bg: #f6e7e2;
+  --green: #2f7a3e;
+  --blue: #2b5fa8;
+  --accent: #8a5a2b;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--muted); }
+::selection { background: #e7e2d8; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 120px; }
+
+/* Header */
+.back { font-size: 13px; color: var(--muted); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.kicker {
+  margin-top: 40px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
+}
+h1 {
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-weight: 400; font-size: 44px; line-height: 1.12; margin: 10px 0 18px;
+}
+.lede { font-size: 18px; color: var(--ink-2); margin: 0 0 22px; max-width: 60ch; }
+.byline { font-size: 14px; color: var(--muted); }
+.pill {
+  display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+  padding: 2px 9px; border-radius: 999px; margin-right: 4px; vertical-align: 1px;
+}
+.pill.green { background: #e3efe2; color: var(--green); }
+.pill.blue { background: #e2eaf5; color: var(--blue); }
+
+/* Sections */
+section { margin-top: 72px; }
+h2 {
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-weight: 400; font-size: 30px; line-height: 1.2; margin: 0 0 8px;
+  scroll-margin-top: 24px;
+}
+.h2-num { color: var(--faint); font-size: 0.7em; margin-right: 10px; font-family: 'Inter', sans-serif; font-weight: 500; vertical-align: 3px; }
+h3 {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
+  margin: 32px 0 12px; padding-bottom: 10px; border-bottom: 1px solid var(--rule-2);
+}
+p { margin: 0 0 14px; }
+ol, ul { padding-left: 1.3em; margin: 0 0 14px; }
+li { margin: 6px 0; }
+li::marker { color: var(--faint); }
+
+code, pre { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 0.86em; }
+:not(pre) > code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; }
+pre {
+  background: var(--code-bg); border: 1px solid var(--rule); border-radius: 4px;
+  padding: 14px 16px; overflow-x: auto; line-height: 1.55; margin: 0 0 14px;
+}
+.kw { color: #8a3b78; } .st { color: #2f6b3a; } .cm { color: var(--faint); font-style: italic; } .nu { color: #9a5a12; }
+
+/* TOC */
+.toc {
+  margin-top: 40px; border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule-2);
+  padding: 18px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; font-size: 14px;
+}
+.toc a { text-decoration: none; display: flex; gap: 10px; }
+.toc a span { color: var(--faint); font-variant-numeric: tabular-nums; width: 1.4em; }
+.toc a:hover { color: var(--accent); }
+
+/* Callouts */
+.note, .trap {
+  border-left: 3px solid var(--accent); background: #f5efe6; padding: 12px 16px; margin: 18px 0; font-size: 15px;
+}
+.trap { border-left-color: var(--bad); background: var(--bad-bg); }
+.note b, .trap b { font-weight: 600; }
+
+/* Quiz */
+.quiz {
+  margin-top: 40px; background: var(--card); border: 1px solid var(--rule-2); border-radius: 6px;
+  padding: 28px 28px 24px; box-shadow: 0 1px 0 var(--rule);
+}
+.quiz-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.quiz-title { font-family: 'Libre Caslon Text', Georgia, serif; font-size: 22px; }
+.quiz-count { font-size: 13px; color: var(--faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.progress { height: 3px; background: var(--rule); margin: 14px 0 22px; border-radius: 2px; overflow: hidden; }
+.progress > div { height: 100%; width: 0; background: var(--accent); transition: width 300ms ease; }
+.q-topic { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+.q-text { font-size: 18px; margin: 0 0 16px; color: var(--ink); }
+.q-text pre { margin-top: 10px; font-size: 14px; }
+.options { display: flex; flex-direction: column; gap: 8px; }
+.opt {
+  font: inherit; font-size: 15px; text-align: left; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--rule-2); border-radius: 4px;
+  padding: 11px 14px; cursor: pointer; display: flex; gap: 12px; align-items: baseline;
+  transition: border-color 150ms, background 150ms;
+}
+.opt:hover:not(:disabled) { border-color: var(--muted); }
+.opt .letter { color: var(--faint); font-weight: 600; font-size: 13px; width: 1em; flex: none; }
+.opt:disabled { cursor: default; }
+.opt.correct { background: var(--ok-bg); border-color: var(--ok); }
+.opt.wrong { background: var(--bad-bg); border-color: var(--bad); }
+.opt.dim { opacity: 0.55; }
+.feedback { margin-top: 16px; font-size: 15px; color: var(--ink-2); display: none; }
+.feedback.show { display: block; }
+.feedback .verdict { font-weight: 600; margin-right: 6px; }
+.feedback .verdict.ok { color: var(--ok); }
+.feedback .verdict.bad { color: var(--bad); }
+.feedback .see { display: block; margin-top: 6px; font-size: 14px; }
+.quiz-nav { display: flex; justify-content: flex-end; margin-top: 20px; gap: 10px; }
+.btn {
+  font: inherit; font-size: 14px; font-weight: 500; color: var(--bg); background: var(--ink);
+  border: 1px solid var(--ink); border-radius: 4px; padding: 9px 18px; cursor: pointer;
+}
+.btn:hover { background: var(--ink-3); }
+.btn:disabled { opacity: 0.3; cursor: default; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule-2); }
+.btn.ghost:hover { border-color: var(--muted); }
+.result { text-align: center; padding: 8px 0; }
+.result .score { font-family: 'Libre Caslon Text', Georgia, serif; font-size: 56px; line-height: 1; margin: 6px 0 10px; }
+.result .msg { color: var(--ink-2); max-width: 46ch; margin: 0 auto 18px; }
+.result ul { text-align: left; max-width: 46ch; margin: 0 auto 20px; font-size: 15px; }
+
+/* Predict-it reveal */
+.predict { margin: 0 0 18px; }
+.predict pre { margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal {
+  width: 100%; font: inherit; font-size: 13px; color: var(--muted); text-align: left;
+  background: var(--card); border: 1px solid var(--rule); border-top: none;
+  border-radius: 0 0 4px 4px; padding: 8px 16px; cursor: pointer;
+}
+.reveal:hover { color: var(--ink); }
+.answer { display: none; padding: 12px 16px; border: 1px solid var(--rule); border-top: none; background: var(--card); font-size: 15px; border-radius: 0 0 4px 4px; }
+.predict.open .reveal { border-radius: 0; }
+.predict.open .answer { display: block; }
+.answer code.out { background: var(--ok-bg); color: var(--ok); }
+
+/* Exercises */
+.ex { border-bottom: 1px solid var(--rule); padding: 14px 0; display: grid; grid-template-columns: 26px 1fr; gap: 4px 10px; }
+.ex:last-child { border-bottom: none; }
+.ex input[type=checkbox] { margin-top: 6px; width: 16px; height: 16px; accent-color: var(--ok); cursor: pointer; }
+.ex-body p { margin: 0; }
+.ex-body .tests { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.ex.done .ex-body > p:first-child { color: var(--faint); text-decoration: line-through; text-decoration-color: var(--rule-2); }
+.lvl { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-right: 6px; }
+.lvl.stretch { color: var(--accent); }
+
+/* Resources */
+.res { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.res a {
+  display: block; text-decoration: none; border: 1px solid var(--rule-2); border-radius: 4px;
+  padding: 14px 16px; background: var(--card); transition: border-color 150ms;
+}
+.res a:hover { border-color: var(--muted); color: var(--ink); }
+.res .r-name { font-weight: 600; font-size: 15px; }
+.res .r-desc { font-size: 14px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+.res .r-plain { border: 1px dashed var(--rule-2); border-radius: 4px; padding: 14px 16px; }
+
+footer { margin-top: 80px; padding-top: 20px; border-top: 1px solid var(--rule-2); font-size: 14px; color: var(--muted); }
+
+@media (max-width: 640px) {
+  .wrap { padding: 40px 16px 80px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 25px; }
+  .toc, .res { grid-template-columns: 1fr; }
+  .quiz { padding: 20px 16px; }
+  .q-text { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<a class="back" href="/">← danys.dev</a>
+
+<div class="kicker">Introduction to Programming · Tutorial 5</div>
+<h1>Part 1 revision</h1>
+<p class="lede">Everything you need to retake the Part 1 skills: a quick quiz to find your gaps, then theory, predict-the-output drills and coding exercises for each topic.</p>
+<div class="byline">For the <span class="pill green">Green</span> and <span class="pill blue">Blue</span> groups · Vincent Danys &amp; Nathan Lim</div>
+
+<!-- QUIZ -->
+<div class="quiz" id="quiz" aria-live="polite"></div>
+
+<div class="note">
+  <b>How to use this page.</b> You only retake the skills you <em>haven't</em> passed. Check the list under your badge on STACK and go straight to those sections. The quiz above tells you where to look too: each wrong answer links to the section that covers it.
+</div>
+
+<p>Each section has three kinds of task:</p>
+<ul>
+  <li><b>Explain it.</b> Answer out loud or in writing, without notes. The assignment asks you to explain code, so this is the most important practice.</li>
+  <li><b>Predict it.</b> Write down the exact output <em>before</em> revealing the answer. If you got it wrong, work out why.</li>
+  <li><b>Code it.</b> Short programs with test cases so you can check your own work. Tick them off as you go; this page remembers.</li>
+</ul>
+
+<p>When you explain code, say <em>what</em> it does, <em>why</em>, and <em>what type</em> each value is. Compare:</p>
+<ul>
+  <li>Weak: “it adds them.”</li>
+  <li>Strong: “it joins the two strings, because <code>+</code> on two <code>str</code> values is concatenation, so the result is the <code>str</code> <code>"103"</code>.”</li>
+</ul>
+
+<nav class="toc" aria-label="Contents">
+  <a href="#strings"><span>1</span>Strings and numbers</a>
+  <a href="#conditions"><span>2</span>Conditions and logic</a>
+  <a href="#loops"><span>3</span>Repetition and loops</a>
+  <a href="#collections"><span>4</span>Lists, sets and dictionaries</a>
+  <a href="#functions"><span>5</span>Functions</a>
+  <a href="#classes"><span>6</span>Classes and instances</a>
+  <a href="#genai"><span>7</span>Introduction to generative AI</a>
+  <a href="#testing"><span>8</span>Testing and documentation</a>
+  <a href="#resources"><span>→</span>Where else to practise</a>
+</nav>
+
+<!-- 1 -->
+<section>
+<h2 id="strings"><span class="h2-num">01</span>Strings and numbers</h2>
+<p>Every value in Python has a <b>type</b>, and the type decides what operators do. <code>+</code> adds two <code>int</code>s but joins two <code>str</code>s. Mixing them is an error, because Python won't guess which one you meant.</p>
+
+<h3>Explain it</h3>
+<ol>
+  <li>What is the difference between <code>/</code>, <code>//</code> and <code>%</code>? Give an example of when you'd use each.</li>
+  <li>Why does <code>"5" + 2</code> cause an error, while <code>"5" * 2</code> does not? What does <code>"5" * 2</code> produce?</li>
+  <li>What type does <code>input()</code> always return? What must you do before doing arithmetic with it?</li>
+  <li>Strings are <em>immutable</em>. What does that mean? What does <code>s.upper()</code> do to <code>s</code>?</li>
+  <li>What is the difference between <code>10 + 3</code>, <code>"10" + "3"</code> and <code>str(10) + str(3)</code>?</li>
+</ol>
+
+<h3>Predict it</h3>
+<div class="predict">
+<pre>s = <span class="st">"Edinburgh"</span>
+print(s[<span class="nu">0</span>], s[<span class="nu">-1</span>], s[<span class="nu">2</span>:<span class="nu">5</span>], len(s), s.upper().count(<span class="st">"I"</span>))</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">E h inb 9 1</code>. Index <code>0</code> is the first character and <code>-1</code> the last. <code>[2:5]</code> gives indices 2, 3 and 4, because the end is excluded. <code>"EDINBURGH"</code> contains one <code>I</code>.</div>
+</div>
+<div class="predict">
+<pre>print(<span class="nu">7</span> // <span class="nu">2</span>, <span class="nu">7</span> % <span class="nu">2</span>, <span class="nu">-7</span> // <span class="nu">2</span>, <span class="nu">2</span> ** <span class="nu">3</span>, <span class="nu">7</span> / <span class="nu">2</span>)
+print(int(<span class="st">"7"</span>) + <span class="nu">2</span>, str(<span class="nu">7</span>) + <span class="st">"2"</span>)</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">3 1 -4 8 3.5</code> then <code class="out">9 72</code>. <code>//</code> rounds <em>down</em>, so −3.5 becomes −4, not −3. <code>/</code> always gives a <code>float</code>. <code>str(7) + "2"</code> joins two strings.</div>
+</div>
+
+<h3>Code it</h3>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">warm-up</span>Ask the user for their name and year of birth, then print <code>Hi &lt;name&gt;, you turn &lt;age&gt; this year.</code></p><p class="tests">Hint: you need <code>int()</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Convert a number of seconds into hours, minutes and seconds.</p><p class="tests">Tests: <code>3725</code> → <code>1h 2m 5s</code> · <code>59</code> → <code>0h 0m 59s</code>. Hint: <code>//</code> and <code>%</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Given a word, print it reversed and say whether it's a palindrome.</p><p class="tests">Tests: <code>"level"</code> → <code>True</code> · <code>"python"</code> → <code>False</code>. Hint: <code>word[::-1]</code>.</p></div></div>
+</section>
+
+<!-- 2 -->
+<section>
+<h2 id="conditions"><span class="h2-num">02</span>Conditions and logic</h2>
+<p>A condition is just an expression that evaluates to <code>True</code> or <code>False</code>. An <code>if</code>/<code>elif</code>/<code>else</code> chain checks conditions top to bottom and runs the <em>first</em> branch that matches. Everything after it is skipped.</p>
+
+<h3>Explain it</h3>
+<ol>
+  <li>Explain <code>and</code>, <code>or</code> and <code>not</code> with an everyday example (“you can enter if you have a ticket <em>and</em> ID”).</li>
+  <li>What is the difference between <code>=</code> and <code>==</code>?</li>
+  <li>Why does order matter in an <code>if</code>/<code>elif</code>/<code>else</code> chain? Give an example where swapping two branches changes the output.</li>
+  <li>A student writes <code>if n &gt; 1 or n &lt; 10:</code> to check <code>n</code> is between 1 and 10. Why is it wrong? Give a value of <code>n</code> that proves it.</li>
+</ol>
+
+<h3>Predict it</h3>
+<div class="predict">
+<pre>x = <span class="nu">0</span>
+print(x == <span class="nu">0</span> <span class="kw">or</span> <span class="nu">1</span>/x &gt; <span class="nu">2</span>)                 <span class="cm"># does it crash?</span>
+print(<span class="kw">not</span> (<span class="kw">True and False</span>) <span class="kw">or False</span>)
+print(bool(<span class="st">""</span>), bool(<span class="st">"0"</span>), bool(<span class="nu">0</span>), bool([]))</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">True</code>, <code class="out">True</code>, <code class="out">False True False False</code>. No crash: <code>x == 0</code> is already <code>True</code>, so <code>or</code> stops there and never runs <code>1/x</code> (“short-circuiting”). Empty things and zero are falsy, but <code>"0"</code> is a non-empty string, so it is <code>True</code>.</div>
+</div>
+
+<h3>Code it</h3>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Grade converter: ≥70 → <code>"A"</code>, ≥60 → <code>"B"</code>, ≥50 → <code>"C"</code>, ≥40 → <code>"D"</code>, otherwise <code>"Fail"</code>.</p><p class="tests">Tests: <code>70</code>, <code>69</code>, <code>40</code>, <code>39</code>, <code>0</code>. Always test the boundaries.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Leap year: divisible by 4, except centuries, except centuries divisible by 400.</p><p class="tests">Tests: <code>2024</code> True · <code>1900</code> False · <code>2000</code> True · <code>2023</code> False.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl stretch">stretch</span>FizzBuzz for 1 to 30: <code>Fizz</code> for multiples of 3, <code>Buzz</code> for 5, <code>FizzBuzz</code> for both, otherwise the number.</p><p class="tests">Explain why the “both” check must come first.</p></div></div>
+</section>
+
+<!-- 3 -->
+<section>
+<h2 id="loops"><span class="h2-num">03</span>Repetition and loops</h2>
+<p>Use a <code>for</code> loop when you know what you're looping over: a list, a string, a <code>range</code>. Use a <code>while</code> loop when you loop <em>until something happens</em> and don't know in advance how many times that will be.</p>
+
+<h3>Explain it</h3>
+<ol>
+  <li>When would you use a <code>for</code> loop instead of a <code>while</code> loop?</li>
+  <li>What values does <code>range(2, 11, 3)</code> produce? What about <code>range(5)</code>?</li>
+  <li>What is the difference between <code>break</code> and <code>continue</code>?</li>
+  <li>What is an infinite loop? Write a <code>while</code> loop that never stops, then fix it.</li>
+  <li>Draw a trace table for the even-sum program on the practice sheet (1.2), then for the <code>while</code> loop below.</li>
+</ol>
+
+<h3>Predict it</h3>
+<div class="predict">
+<pre><span class="kw">for</span> i <span class="kw">in</span> range(<span class="nu">1</span>, <span class="nu">10</span>, <span class="nu">3</span>):
+    print(i, end=<span class="st">" "</span>)</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">1 4 7</code>. It starts at 1, steps by 3, and stops <em>before</em> 10.</div>
+</div>
+<div class="predict">
+<pre>n = <span class="nu">10</span>
+c = <span class="nu">0</span>
+<span class="kw">while</span> n &gt; <span class="nu">1</span>:
+    n = n // <span class="nu">2</span>
+    c += <span class="nu">1</span>
+print(n, c)</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">1 3</code>. <code>n</code> goes 10 → 5 → 2 → 1, which is three halvings. Then <code>1 &gt; 1</code> is false, so the loop stops.</div>
+</div>
+
+<h3>Code it</h3>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">warm-up</span>Print the 7 times table from 7 × 1 to 7 × 12.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span><b>Fibonacci.</b> Print the first <code>n</code> Fibonacci numbers. Then use a <code>while</code> loop to find the first Fibonacci number over 1000.</p><p class="tests">Test: <code>n = 8</code> → <code>0 1 1 2 3 5 8 13</code>. The second answer is 1597.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Sum the digits of a number using <code>%</code> and <code>//</code>, without converting it to a string.</p><p class="tests">Test: <code>4096</code> → <code>19</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Keep asking the user for numbers until they type <code>0</code>, then print the total and the average.</p><p class="tests">What should happen if the very first number is <code>0</code>?</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl stretch">stretch</span>For each number from 2 to 50, print whether it's prime.</p><p class="tests">Hint: a loop inside a loop, and <code>break</code>.</p></div></div>
+</section>
+
+<!-- 4 -->
+<section>
+<h2 id="collections"><span class="h2-num">04</span>Lists, sets and dictionaries</h2>
+<p>Choose by how you'll <b>look things up</b>:</p>
+<ul>
+  <li>A <b>list</b> keeps order and is looked up by position (<code>marks[1]</code>).</li>
+  <li>A <b>dictionary</b> is looked up by key (<code>marks["Alice"]</code>).</li>
+  <li>A <b>set</b> answers one question fast: “is this in here?”. It has no order and no duplicates.</li>
+</ul>
+
+<h3>Explain it</h3>
+<ol>
+  <li>When would you choose a list, a set, or a dictionary? Give an example of each.</li>
+  <li>Why does <code>my_set[0]</code> fail? Why does adding the same value to a set twice not create two copies?</li>
+  <li>What does it mean that lists, sets and dictionaries are <em>mutable</em>?</li>
+  <li>After <code>b = a</code>, why does changing <code>b</code> also change <code>a</code>? How do you make an independent copy?</li>
+  <li>In <code>for k in d:</code>, where <code>d</code> is a dictionary, what values does <code>k</code> take? How do you get each value too?</li>
+</ol>
+
+<h3>Predict it</h3>
+<div class="predict">
+<pre>a = [<span class="nu">1</span>, <span class="nu">2</span>, <span class="nu">3</span>]
+b = a
+b.append(<span class="nu">4</span>)
+print(a, len(a))</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">[1, 2, 3, 4] 4</code>. <code>b = a</code> doesn't copy the list. It gives the <em>same</em> list a second name. Use <code>a.copy()</code> for a real copy.</div>
+</div>
+<div class="predict">
+<pre>d = {<span class="st">"x"</span>: <span class="nu">1</span>}
+d[<span class="st">"y"</span>] = <span class="nu">2</span>
+d[<span class="st">"x"</span>] += <span class="nu">5</span>
+print(d, len({<span class="nu">1</span>, <span class="nu">2</span>, <span class="nu">2</span>, <span class="nu">3</span>, <span class="nu">3</span>, <span class="nu">3</span>}))</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">{'x': 6, 'y': 2} 3</code>. Assigning to a new key adds it. A set keeps each value once, so it's <code>{1, 2, 3}</code>.</div>
+</div>
+
+<div class="trap"><b>On the practice sheet (7.3), so expect it:</b> aliasing. <code>saved = seen</code> then <code>saved.add(10)</code> changes <code>seen</code> too, because both names point at one set.</div>
+
+<h3>Code it</h3>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">warm-up</span>Given <code>nums = [4, 9, 2, 9, 7]</code>, find the largest, smallest and average without using <code>max</code>, <code>min</code> or <code>sum</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Remove duplicates from a list two ways: with a set, and with a loop that keeps the original order.</p><p class="tests">Test: <code>[3, 1, 3, 2, 1]</code> → <code>[3, 1, 2]</code> (order kept).</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span><b>Word counter.</b> Build a dictionary mapping each word in a sentence to how often it appears.</p><p class="tests">Test: <code>"the cat and the hat"</code> → <code>{"the": 2, "cat": 1, "and": 1, "hat": 1}</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Given <code>marks = {"Ali": 72, "Bea": 48, "Cal": 61}</code>, print everyone who passed (≥50) and the name of the top student.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl stretch">stretch</span>Given lists of students on two courses, use sets to find who's on both, who's on only one, and everyone combined.</p></div></div>
+</section>
+
+<!-- 5 -->
+<section>
+<h2 id="functions"><span class="h2-num">05</span>Functions</h2>
+<p>A function packages up some steps behind a name. Data goes in through <b>parameters</b> and comes out through <code>return</code>. Variables created inside a function are <b>local</b>: they exist only while that call is running.</p>
+
+<h3>Explain it</h3>
+<ol>
+  <li>What is the difference between a <em>parameter</em> and an <em>argument</em>?</li>
+  <li>What is the difference between <code>return</code> and <code>print</code>? What does a function without <code>return</code> give back?</li>
+  <li>What is a default parameter value? What are keyword arguments, and why can they be given in any order?</li>
+  <li>What is <em>local scope</em>? Why can't you use a variable from inside a function after the call finishes?</li>
+  <li>Give two reasons why splitting a program into functions beats one long block.</li>
+</ol>
+
+<h3>Predict it</h3>
+<div class="predict">
+<pre><span class="kw">def</span> f(x, y=<span class="nu">2</span>):
+    <span class="kw">return</span> x * y
+print(f(<span class="nu">3</span>), f(<span class="nu">3</span>, <span class="nu">4</span>), f(y=<span class="nu">1</span>, x=<span class="nu">5</span>))</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">6 12 5</code>. The default <code>y=2</code> is used only when <code>y</code> isn't given. Keyword arguments are matched by name, so their order doesn't matter.</div>
+</div>
+<div class="predict">
+<pre><span class="kw">def</span> g(n):
+    n = n + <span class="nu">1</span>
+
+total = <span class="nu">5</span>
+g(total)
+print(total)</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">5</code>. Inside <code>g</code>, <code>n</code> is a local name. Rebinding it doesn't touch <code>total</code>, and <code>g</code> doesn't return anything.</div>
+</div>
+<div class="predict">
+<pre><span class="kw">def</span> h():
+    print(<span class="st">"hi"</span>)
+
+r = h()
+print(r)</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">hi</code> then <code class="out">None</code>. <code>h</code> <em>prints</em> but returns nothing, so <code>r</code> is <code>None</code>. This is the classic <code>print</code>-vs-<code>return</code> mistake.</div>
+</div>
+
+<h3>Code it</h3>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">warm-up</span><code>is_even(n)</code> returns <code>True</code> or <code>False</code>.</p><p class="tests">Tests: <code>0</code>, <code>7</code>, <code>-4</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span><code>average(nums)</code> returns the mean of a list. Decide what it should return for an empty list, and justify it.</p><p class="tests">This is practice sheet 5.3.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span><code>fib(n)</code> returns the <code>n</code>-th Fibonacci number. Then <code>fib_list(n)</code> returns a list of the first <code>n</code>.</p><p class="tests">Should <code>fib_list</code> call <code>fib</code>? Think about how much repeated work that does.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span><code>count_vowels(word, include_y=False)</code>, with an optional default parameter.</p><p class="tests">Tests: <code>count_vowels("rhythm")</code> → <code>0</code> · <code>count_vowels("rhythm", include_y=True)</code> → <code>1</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl stretch">stretch</span><code>c_to_f(c)</code> and <code>f_to_c(f)</code>. Check that converting there and back returns the original number.</p></div></div>
+</section>
+
+<!-- 6 -->
+<section>
+<h2 id="classes"><span class="h2-num">06</span>Classes and instances</h2>
+<p>A class describes a <em>kind</em> of thing: what data it holds and what it can do. Each object made from it is an <b>instance</b> with its own copy of the data. <code>self</code> is how a method refers to “this particular object”.</p>
+
+<h3>Explain it</h3>
+<ol>
+  <li>What is the difference between a class and an instance? Use your own analogy, not “blueprint and house”.</li>
+  <li>What is <code>self</code>? Why does every method take it as its first parameter?</li>
+  <li>When is <code>__init__</code> called? When is <code>__str__</code> called?</li>
+  <li>What is the difference between an instance attribute and a class attribute? If you change one, which objects see the change?</li>
+</ol>
+
+<h3>Predict it</h3>
+<div class="predict">
+<pre><span class="kw">class</span> Counter:
+    <span class="kw">def</span> __init__(self):
+        self.count = <span class="nu">0</span>
+
+    <span class="kw">def</span> click(self):
+        self.count += <span class="nu">1</span>
+        <span class="kw">return</span> self.count
+
+c1 = Counter()
+c2 = Counter()
+c1.click(); c1.click(); c2.click()
+print(c1.count, c2.count)</pre>
+<button class="reveal">Show answer</button>
+<div class="answer"><code class="out">2 1</code>. Each object has its own <code>count</code>, set to 0 by <code>__init__</code> when that object was created.</div>
+</div>
+
+<h3>Code it</h3>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>A <code>BankAccount</code> with <code>owner</code> and <code>balance</code> (default 0), and methods <code>deposit(amount)</code> and <code>withdraw(amount)</code>. Refuse withdrawals that would make the balance negative. Add <code>__str__</code> so printing gives e.g. <code>Ali: £50</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>A <code>Rectangle</code> with <code>width</code> and <code>height</code>, and methods <code>area()</code>, <code>perimeter()</code> and <code>is_square()</code>.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl stretch">stretch</span>A <code>Course</code> that holds a list of <code>Student</code> objects (use the one from the practice sheet), with <code>enrol(student)</code> and a <code>__str__</code> listing everyone.</p><p class="tests">Why must the list be created in <code>__init__</code> and not as a class attribute? Try both and see.</p></div></div>
+</section>
+
+<!-- 7 -->
+<section>
+<h2 id="genai"><span class="h2-num">07</span>Introduction to generative AI</h2>
+<p>A language model writes code by predicting what text is likely to come next. It doesn't run the code or check that it's correct. That's why it can be confidently wrong, and why your understanding is what gets assessed.</p>
+
+<h3>Explain it</h3>
+<ol>
+  <li>In a short paragraph: how does a large language model produce code? Why can it give a confident answer that's wrong?</li>
+  <li>Name three things you'd check before trusting code an AI wrote for you.</li>
+  <li>The assessment asks you to explain code without notes. Why doesn't copying AI answers into your report prepare you for that?</li>
+  <li>What's a good way to use AI while revising? What's a bad way?</li>
+</ol>
+
+<h3>Try it</h3>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Ask an AI assistant to write <code>average(nums)</code> from Section 5. Explain every line in your own words, then test it on <code>[]</code>, <code>[5]</code> and <code>[1, 2, 3, 4]</code>.</p><p class="tests">Does it handle the empty list the way <em>you</em> decided it should?</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Ask it to plant one subtle bug in a function you've written, without telling you where. Find it yourself.</p></div></div>
+</section>
+
+<!-- 8 -->
+<section>
+<h2 id="testing"><span class="h2-num">08</span>Testing and documentation</h2>
+<p>A <b>docstring</b> says what a function is <em>supposed</em> to do. A <b>test</b> checks that it actually does. “I ran it once and it worked” is not a test. A test is something you can rerun every time you change the code.</p>
+
+<h3>Explain it</h3>
+<ol>
+  <li>What is a docstring? Who reads it? How is it different from a comment, and from a <code>return</code> value?</li>
+  <li>What does <code>assert</code> do? What happens when an assertion fails?</li>
+  <li>What is an <em>edge case</em>? Give two for a function that finds the largest number in a list.</li>
+  <li>Why is “I ran it once and it worked” not a test?</li>
+</ol>
+
+<h3>Predict it</h3>
+<div class="predict">
+<pre><span class="kw">def</span> double(x):
+    <span class="st">"""Return x multiplied by two."""</span>
+    <span class="kw">return</span> x + x
+
+<span class="kw">assert</span> double(<span class="nu">3</span>) == <span class="nu">6</span>
+<span class="kw">assert</span> double(<span class="st">"ab"</span>) == <span class="st">"abab"</span>
+<span class="kw">assert</span> double(<span class="nu">0.1</span>) == <span class="nu">0.2</span>
+<span class="kw">assert</span> double([<span class="nu">1</span>]) == [<span class="nu">2</span>]      <span class="cm"># which line fails, if any?</span></pre>
+<button class="reveal">Show answer</button>
+<div class="answer">Only the <b>last</b> fails, with an <code>AssertionError</code>. <code>double([1])</code> is <code class="out">[1, 1]</code>, because <code>+</code> on lists joins them rather than adding the numbers inside. The float one happens to pass, but floats aren't always exact: try <code>0.1 + 0.2 == 0.3</code>. The docstring says “multiplied by two”, but the code does different things for different types. Tests are how you find that out.</div>
+</div>
+
+<h3>Code it</h3>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>Take three functions you wrote in Section 5. Give each a docstring and at least four <code>assert</code> tests, including one edge case.</p></div></div>
+<div class="ex"><input type="checkbox" aria-label="Done"><div class="ex-body"><p><span class="lvl">core</span>This should return the largest number in a list. Write a test that exposes the bug, then fix it.</p>
+<pre style="margin-top:10px"><span class="kw">def</span> largest(nums):
+    best = <span class="nu">0</span>
+    <span class="kw">for</span> n <span class="kw">in</span> nums:
+        <span class="kw">if</span> n &gt; best:
+            best = n
+    <span class="kw">return</span> best</pre></div></div>
+</section>
+
+<!-- RESOURCES -->
+<section>
+<h2 id="resources">Where else to practise</h2>
+<p>Start with the course's own material. It matches the assessment. Then use the others for extra reps.</p>
+<div class="res">
+  <div class="r-plain"><div class="r-name">Course materials</div><div class="r-desc">Lecture recordings, the self-guided notebooks, and the extra materials linked from each lecture on OpenCourse.</div></div>
+  <div class="r-plain"><div class="r-name">TA revision tutorial</div><div class="r-desc">Dominik and Mario will go through the questions you got wrong. Bring your specific mistakes.</div></div>
+  <a href="https://pythontutor.com/python-compiler.html#mode=edit" target="_blank" rel="noopener"><div class="r-name">Python Tutor ↗</div><div class="r-desc">Paste any snippet above and step through it line by line. It's a trace table that draws itself.</div></a>
+  <a href="https://codingbat.com/python" target="_blank" rel="noopener"><div class="r-name">CodingBat ↗</div><div class="r-desc">Hundreds of tiny exercises on strings, logic and lists, with instant feedback.</div></a>
+  <a href="https://exercism.org/tracks/python" target="_blank" rel="noopener"><div class="r-name">Exercism ↗</div><div class="r-desc">Free exercises with automatic tests, ordered by concept.</div></a>
+  <a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener"><div class="r-name">Official Python tutorial ↗</div><div class="r-desc">Chapters 3–5 and 9 cover almost all of Part 1.</div></a>
+</div>
+</section>
+
+<footer>
+  Stuck? Email us or post on EdStem, and bring your attempt even if it's wrong. · Vincent Danys &amp; Nathan Lim
+</footer>
+
+</main>
+
+<script>
+(function () {
+  // ---------- Quiz ----------
+  const Q = [
+    { topic: 'Strings and numbers', sec: 'strings',
+      q: 'Which of these expressions produces a <code>float</code>?',
+      opts: ['<code>7 // 2</code>', '<code>7 / 2</code>', '<code>7 % 2</code>', '<code>int("7")</code>'], a: 1,
+      why: '<code>/</code> is true division and always returns a float, even for <code>6 / 2</code> (which is <code>3.0</code>). <code>//</code> and <code>%</code> on two ints give ints.' },
+    { topic: 'Strings and numbers', sec: 'strings',
+      q: 'A user types <code>42</code> when <code>x = input("Age: ")</code> runs. What is the type of <code>x</code>?',
+      opts: ['<code>int</code>', '<code>float</code>', '<code>str</code>', 'It depends on what the user typed'], a: 2,
+      why: '<code>input()</code> always returns a string, whatever the user types. You need <code>int(x)</code> before doing arithmetic.' },
+    { topic: 'Conditions and logic', sec: 'conditions',
+      q: 'For which values of <code>n</code> is <code>n &gt; 1 or n &lt; 10</code> true?',
+      opts: ['Only 2 to 9', 'Only 1 to 10', 'Every number', 'No number'], a: 2,
+      why: 'Every number is either greater than 1 or less than 10 (or both), so <code>or</code> makes it always true. To check a range you need <code>and</code>: <code>1 &lt;= n and n &lt;= 10</code>.' },
+    { topic: 'Repetition and loops', sec: 'loops',
+      q: 'What does <code>continue</code> do inside a loop?',
+      opts: ['Exits the loop completely', 'Skips the rest of this iteration and moves on to the next one', 'Restarts the loop from the first item', 'Does nothing; it\'s a placeholder'], a: 1,
+      why: '<code>continue</code> jumps straight to the next iteration. <code>break</code> is the one that leaves the loop entirely. (The do-nothing placeholder is <code>pass</code>.)' },
+    { topic: 'Lists, sets and dictionaries', sec: 'collections',
+      q: 'Why does <code>seen[0]</code> fail when <code>seen</code> is a set?',
+      opts: ['Sets are immutable', 'Sets have no order, so there is no “position 0”', 'Sets can only hold strings', 'You must use <code>seen.get(0)</code> instead'], a: 1,
+      why: 'Sets are unordered: they only answer “is this value in here?”. With no positions, indexing makes no sense. Sets are actually mutable; you can <code>add</code> to them.' },
+    { topic: 'Lists, sets and dictionaries', sec: 'collections',
+      q: 'After <code>a = [1, 2]</code>, <code>b = a</code>, <code>b.append(3)</code>, what is <code>a</code>?',
+      opts: ['<code>[1, 2]</code>', '<code>[1, 2, 3]</code>', '<code>[3]</code>', 'An error'], a: 1,
+      why: '<code>b = a</code> doesn\'t copy anything. Both names refer to the same list, so appending through <code>b</code> changes what <code>a</code> sees. Use <code>a.copy()</code> for an independent copy.' },
+    { topic: 'Functions', sec: 'functions',
+      q: 'A function prints a result but has no <code>return</code> statement. What does calling it give back?',
+      opts: ['The printed value', '<code>0</code>', '<code>None</code>', 'An error'], a: 2,
+      why: 'Every function returns something. If there\'s no <code>return</code>, it returns <code>None</code>. Printing shows text on screen; it doesn\'t hand a value back to the caller.' },
+    { topic: 'Classes and instances', sec: 'classes',
+      q: 'Inside a method, what does <code>self</code> refer to?',
+      opts: ['The class itself', 'The particular object the method was called on', 'The previous object that was created', 'A built-in Python keyword with a fixed value'], a: 1,
+      why: 'In <code>c1.click()</code>, Python passes <code>c1</code> in as <code>self</code>. That\'s how <code>self.count</code> reaches <code>c1</code>\'s own count and not another object\'s.' },
+    { topic: 'Generative AI', sec: 'genai',
+      q: 'Why can an AI assistant give code that looks right but is wrong?',
+      opts: ['It runs the code but on an old Python version', 'It generates likely-looking text and doesn\'t verify that the code works', 'It deliberately adds bugs', 'It only knows other programming languages'], a: 1,
+      why: 'A language model predicts plausible text. It doesn\'t execute or check its answer, so you have to: read it, explain it, and test it.' },
+    { topic: 'Testing and documentation', sec: 'testing',
+      q: 'What happens when <code>assert total == 10</code> runs and <code>total</code> is <code>9</code>?',
+      opts: ['Nothing; asserts are only comments', 'It sets <code>total</code> to 10', 'It prints <code>False</code> and carries on', 'It raises an <code>AssertionError</code> and stops the program'], a: 3,
+      why: 'An <code>assert</code> checks a condition. If it\'s false, Python raises <code>AssertionError</code>. That\'s what makes it useful as a test: a failure can\'t be silently ignored.' },
+  ];
+
+  const root = document.getElementById('quiz');
+  let i = 0, score = 0, answered = false;
+  const missed = [];
+
+  function render() {
+    if (i >= Q.length) return renderResult();
+    const item = Q[i];
+    answered = false;
+    if (!item.order) {
+      item.order = item.opts.map((_, k) => k);
+      for (let j = item.order.length - 1; j > 0; j--) {
+        const r = Math.floor(Math.random() * (j + 1));
+        [item.order[j], item.order[r]] = [item.order[r], item.order[j]];
+      }
+    }
+    root.innerHTML = `
+      <div class="quiz-top">
+        <div class="quiz-title">Find your gaps</div>
+        <div class="quiz-count">${i + 1} / ${Q.length}</div>
+      </div>
+      <div class="progress"><div style="width:${(i / Q.length) * 100}%"></div></div>
+      <div class="q-topic">${item.topic}</div>
+      <div class="q-text">${item.q}</div>
+      <div class="options">
+        ${item.order.map((k, pos) => `<button class="opt" data-k="${k}"><span class="letter">${'ABCD'[pos]}</span><span>${item.opts[k]}</span></button>`).join('')}
+      </div>
+      <div class="feedback"></div>
+      <div class="quiz-nav"><button class="btn" id="next" disabled>${i === Q.length - 1 ? 'See results' : 'Next'}</button></div>`;
+    root.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => choose(+b.dataset.k)));
+    root.querySelector('#next').addEventListener('click', () => { i++; render(); });
+  }
+
+  function choose(k) {
+    if (answered) return;
+    answered = true;
+    const item = Q[i];
+    const ok = k === item.a;
+    if (ok) score++; else missed.push(item);
+    root.querySelectorAll('.opt').forEach(b => {
+      const bk = +b.dataset.k;
+      b.disabled = true;
+      if (bk === item.a) b.classList.add('correct');
+      else if (bk === k) b.classList.add('wrong');
+      else b.classList.add('dim');
+    });
+    const fb = root.querySelector('.feedback');
+    fb.innerHTML = `<span class="verdict ${ok ? 'ok' : 'bad'}">${ok ? 'Correct.' : 'Not quite.'}</span>${item.why}` +
+      (ok ? '' : `<a class="see" href="#${item.sec}">Revise this in section ${sectionNum(item.sec)} →</a>`);
+    fb.classList.add('show');
+    const next = root.querySelector('#next');
+    next.disabled = false;
+    next.focus({ preventScroll: true });
+  }
+
+  function sectionNum(id) {
+    return ['strings','conditions','loops','collections','functions','classes','genai','testing'].indexOf(id) + 1;
+  }
+
+  function renderResult() {
+    const secs = [...new Map(missed.map(m => [m.sec, m.topic])).entries()];
+    const msg = score === Q.length
+      ? 'Clean sweep. You know the theory, so spend your time on the <a href="#loops">coding exercises</a>. That\'s where marks are usually lost.'
+      : score >= 7
+        ? 'Solid. Revise the sections below, then move on to the coding exercises.'
+        : 'Good, now you know where to start. Work through these sections first:';
+    root.innerHTML = `
+      <div class="quiz-top"><div class="quiz-title">Your result</div><div class="quiz-count">${Q.length} / ${Q.length}</div></div>
+      <div class="progress"><div style="width:100%"></div></div>
+      <div class="result">
+        <div class="score">${score}<span style="color:var(--faint);font-size:0.5em"> / ${Q.length}</span></div>
+        <p class="msg">${msg}</p>
+        ${secs.length ? `<ul>${secs.map(([id, t]) => `<li><a href="#${id}">${sectionNum(id)}. ${t}</a></li>`).join('')}</ul>` : ''}
+        <button class="btn ghost" id="retry">Try again</button>
+      </div>`;
+    root.querySelector('#retry').addEventListener('click', () => { i = 0; score = 0; missed.length = 0; Q.forEach(q => delete q.order); render(); });
+  }
+
+  render();
+
+  // ---------- Predict-it reveals ----------
+  document.querySelectorAll('.predict').forEach(p => {
+    const btn = p.querySelector('.reveal');
+    btn.addEventListener('click', () => {
+      const open = p.classList.toggle('open');
+      btn.textContent = open ? 'Hide answer' : 'Show answer';
+    });
+  });
+
+  // ---------- Exercise checklist (remembered per browser) ----------
+  const KEY = 'ip-tutorial5-done';
+  let done = [];
+  try { done = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { done = []; }
+  document.querySelectorAll('.ex').forEach((ex, idx) => {
+    const cb = ex.querySelector('input[type=checkbox]');
+    if (done.includes(idx)) { cb.checked = true; ex.classList.add('done'); }
+    cb.addEventListener('change', () => {
+      ex.classList.toggle('done', cb.checked);
+      done = cb.checked ? [...new Set([...done, idx])] : done.filter(d => d !== idx);
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+    });
+  });
+})();
+</script>
+</body>
+</html>
